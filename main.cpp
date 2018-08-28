@@ -4,6 +4,7 @@
 using namespace std;
 
 enum dayofweek{monday=1,tuesday,wednesday=20,thursday,friday,saturday,sunday};
+
 void menu()
 {
     cout << " Select the day of the week " << endl;
@@ -20,6 +21,7 @@ void menu()
 string getDay(dayofweek days)
     {
         switch(days)
+
         {
             case monday :
                 return "Monday";
@@ -50,20 +52,35 @@ string getDay(dayofweek days)
 int main()
 
 {
-    int indeks;
+    int days;
     char ch;
-    do
-    {
         do
-    {
-         menu();
-         cin >> indeks;
-         cout << getDay(dayofweek(indeks)) <<endl;
-         cout << "Do you want to continue the program? [Y/N]" << endl;
-         cin >> ch;
-         system("cls");
-    }
-    while( ch!= 'y' && ch!= 'Y' && ch!= 'n' && ch!= 'N');
+        {
+                 system("clear");
+                 menu();
+                 while(!(cin >> days))
+                 {
+                   cin.clear();
+                   cin.ignore(1024,'\n');
+                   system("clear");
+                   menu();
+                   cout << endl;
+                   cout << " incorrect data, try again ;) " << endl;
+
+                 }
+
+                 cout << getDay(dayofweek(days)) <<endl;
+
+            do
+                {
+
+
+                    cout << "Do you want to continue the program? [Y/N]" << endl;
+                    cin >> ch;
+                    cin.ignore(1024,'\n');
+
+                }
+                while( ch!= 'y' && ch!= 'Y' && ch!= 'n' && ch!= 'N');
 
     }
     while (ch=='y'||ch=='Y');
